@@ -19,7 +19,7 @@ namespace Assignment_3_skeleton
             throw new NotImplementedException();
         }
 
-        public bool Contains(object data)//4
+        public bool Contains(object data)//3
         {
             //head is frist node
             // current go through each node
@@ -40,7 +40,7 @@ namespace Assignment_3_skeleton
 
         }
 
-        public void Delete(int index)//5
+        public void Delete(int index)//4
         {
             IDictionary (index < 0 || index >= Size())
             {
@@ -67,7 +67,7 @@ namespace Assignment_3_skeleton
 
         }
 
-        public int IndexOf(object data)//6
+        public int IndexOf(object data)//5
                       // cant return true because its int
         {
             Node current = head;
@@ -90,32 +90,32 @@ namespace Assignment_3_skeleton
 
         }
 
-        public void Insert(object data, int index)//7
+        public void Insert(object data, int index)//6
         {
             throw new NotImplementedException();
         }
 
-        public bool IsEmpty()//8
+        public bool IsEmpty()//7
         {
             throw new NotImplementedException();
         }
 
-        public void Prepend(object data)//9
+        public void Prepend(object data)//8
         {
             throw new NotImplementedException();
         }
 
-        public void Replace(object data, int index)//10
+        public void Replace(object data, int index)//9
         {
             throw new NotImplementedException();
         }
 
-        public object Retrieve(int index)//11
+        public object Retrieve(int index)//10
         {
             throw new NotImplementedException();
         }
 
-        public int Size()//12
+        public int Size()//11
         {
             throw new NotImplementedException();
         }
