@@ -7,58 +7,115 @@ using System.Threading.Tasks;
 namespace Assignment_3_skeleton
 {
     public class SLL : LinkedListADT
+        
     {
-        public void Append(object data)
+        public void Append(object data) //1
         {
             throw new NotImplementedException();
         }
 
-        public void Clear()
+        public void Clear()//2
         {
             throw new NotImplementedException();
         }
 
-        public bool Contains(object data)
+        public bool Contains(object data)//4
+        {
+            //head is frist node
+            // current go through each node
+            Node current = head;
+
+            while (current != null)
+            {
+                if (current.Data == null && data == null)
+                    return true;
+                else if (current.Data != null && current.Data.Equals(data))
+                    return true;
+
+                current = current.Next;
+            }
+
+            return false;
+
+
+        }
+
+        public void Delete(int index)//5
+        {
+            IDictionary (index < 0 || index >= Size())
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+            if (index == 0)
+            {
+                head = head.Next;
+                size--;
+                return;
+            }
+            else
+            {
+                Node current = head;
+                for (int i = 0; i < index - 1; i++)
+                {
+                    current = current.Next;
+                }
+
+                current.Next = current.Next.Next;
+            }
+
+            size--1;
+
+        }
+
+        public int IndexOf(object data)//6
+                      // cant return true because its int
+        {
+            Node current = head;
+            // keep track on nodes index
+            int index = 0;
+
+            while (current != null)
+            {
+                if ((current.Data == null && data == null) ||
+                    (current.Data != null && current.Data.Equals(data)))
+                {
+                    return index;
+                }
+
+                current = current.Next;
+                index++;
+            }
+
+            return -1;
+
+        }
+
+        public void Insert(object data, int index)//7
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int index)
+        public bool IsEmpty()//8
         {
             throw new NotImplementedException();
         }
 
-        public int IndexOf(object data)
+        public void Prepend(object data)//9
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(object data, int index)
+        public void Replace(object data, int index)//10
         {
             throw new NotImplementedException();
         }
 
-        public bool IsEmpty()
+        public object Retrieve(int index)//11
         {
             throw new NotImplementedException();
         }
 
-        public void Prepend(object data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Replace(object data, int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Retrieve(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Size()
+        public int Size()//12
         {
             throw new NotImplementedException();
         }
