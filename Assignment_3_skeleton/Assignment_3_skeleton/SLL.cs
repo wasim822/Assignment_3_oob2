@@ -1,123 +1,102 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace Assignment_3_skeleton
+namespace Utility
 {
-    public class SLL : LinkedListADT
-        
+    public class Node
     {
-        public void Append(object data) //1
+        public object Data;
+        public Node Next;
+
+        public Node(object data)
         {
-            throw new NotImplementedException();
+            Data = data;
+            Next = null;
+        }
+    }
+
+    public interface ILinkedListADT
+    {
+        void Insert(object data, int index);
+        void RemoveFirst();
+        void RemoveLast();
+    }
+
+    public class SLL : ILinkedListADT
+    {
+        private Node head;
+        private int size;
+
+        public SLL()
+        {
+            head = null;
+            size = 0;
         }
 
-        public void Clear()//2
+        public void Insert(object data, int index)
         {
-            throw new NotImplementedException();
-        }
+            if (index < 0 || index > size)
+            {
+                Console.WriteLine("Invalid index");
+                return;
+            }
 
-        public bool Contains(object data)//3
-        {
-            //head is frist node
-            // current go through each node
+            if (index == 0)
+            {
+                Node newHead = new Node(data);
+                newHead.Next = head;
+                head = newHead;
+                size++;
+                return;
+            }
+
+            Node newNode = new Node(data);
             Node current = head;
 
-            while (current != null)
+            for (int i = 0; i < index - 1; i++)
             {
-                if (current.Data == null && data == null)
-                    return true;
-                else if (current.Data != null && current.Data.Equals(data))
-                    return true;
-
                 current = current.Next;
             }
 
-            return false;
-
-
+            newNode.Next = current.Next;
+            current.Next = newNode;
+            size++;
         }
 
-        public void Delete(int index)//4
+        public void RemoveFirst()
         {
-            IDictionary (index < 0 || index >= Size())
+            if (head == null)
             {
-                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
-            }
-            if (index == 0)
-            {
-                head = head.Next;
-                size--;
+                Console.WriteLine("List is empty");
                 return;
+            }
+
+            head = head.Next;
+            size--;
+        }
+
+        public void RemoveLast()
+        {
+            if (head == null)
+            {
+                Console.WriteLine("List is empty");
+                return;
+            }
+
+            if (head.Next == null)
+            {
+                head = null;
             }
             else
             {
                 Node current = head;
-                for (int i = 0; i < index - 1; i++)
+                while (current.Next.Next != null)
                 {
                     current = current.Next;
                 }
-
-                current.Next = current.Next.Next;
+                current.Next = null;
             }
 
-            size--1;
-
-        }
-
-        public int IndexOf(object data)//5
-                      // cant return true because its int
-        {
-            Node current = head;
-            // keep track on nodes index
-            int index = 0;
-
-            while (current != null)
-            {
-                if ((current.Data == null && data == null) ||
-                    (current.Data != null && current.Data.Equals(data)))
-                {
-                    return index;
-                }
-
-                current = current.Next;
-                index++;
-            }
-
-            return -1;
-
-        }
-
-        public void Insert(object data, int index)//6
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsEmpty()//7
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Prepend(object data)//8
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Replace(object data, int index)//9
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Retrieve(int index)//10
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Size()//11
-        {
-            throw new NotImplementedException();
+            size--;
         }
     }
 }
